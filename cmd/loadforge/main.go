@@ -77,7 +77,7 @@ func printSummary(r loadtest.Result) {
 }
 func serveCommand(args []string) error {
 	fs:=flag.NewFlagSet("serve",flag.ContinueOnError)
-	addr:=fs.String("addr",":8080","HTTP listen address")
+	addr:=fs.String("addr","127.0.0.1:8080","HTTP listen address")
 	staticDir:=fs.String("static","web/dist","Built dashboard directory")
 	allowPrivate:=fs.Bool("allow-private-targets",strings.EqualFold(os.Getenv("LOADFORGE_ALLOW_PRIVATE_TARGETS"),"true"),"Allow private targets; use only on a trusted local instance")
 	if err:=fs.Parse(args);err!=nil{return err}
