@@ -47,7 +47,7 @@ func TestRunEndpointExecutesBoundedTest(t *testing.T) {
 	}))
 	defer target.Close()
 
-	body := `{"url":"` + target.URL + `","concurrency":2,"duration_seconds":1,"requests_per_second":2,"max_requests":2,"authorization_confirmed":true}`
+	body := `{"url":"` + target.URL + `","concurrency":2,"duration_seconds":3,"requests_per_second":2,"max_requests":2,"authorization_confirmed":true}`
 	recorder := httptest.NewRecorder()
 	request := httptest.NewRequest(http.MethodPost, "/api/v1/runs", strings.NewReader(body))
 	Server{AllowPrivateTargets: true}.Handler().ServeHTTP(recorder, request)
